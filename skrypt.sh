@@ -14,6 +14,17 @@ then
     echo "--logs [i] Tworzy i plików log"
 fi
 
+if [ "$1" == "--init" ]
+then
+    # URL twojego repozytorium
+    REPO_URL="https://github.com/GrzegorzBanaszak/Lab4Bash"
+    
+    # Klonowanie repozytorium do obecnego katalogu
+    git clone $REPO_URL .
+    
+    # Dodanie obecnego katalogu do zmiennej środowiskowej PATH
+    export PATH=$PATH:$(pwd)
+fi
 
 if [ "$1" == "--logs"  ] && [[ $2 =~ ^[0-9]+$ ]] || [ "$1" == "-l"  ] && [[ $2 =~ ^[0-9]+$ ]]
 then
