@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ "$1" == "--date" ]
+if [ "$1" == "--date" ] || [ "$1" == "-d" ]
 then
     current_date=$(date +"%Y-%m-%d")
     echo "Dzisiejsza data: $current_date"
 fi
 
-if [ "$1" == "--help" ]
+if [ "$1" == "--help" ] || [ "$1" == "-h" ]
 then
     echo "Dostępne komendy"
     echo "--date wyświetla aktualną datę"
@@ -15,14 +15,14 @@ then
 fi
 
 
-if [ "$1" == "--logs"  ] && [[ $2 =~ ^[0-9]+$ ]]
+if [ "$1" == "--logs"  ] && [[ $2 =~ ^[0-9]+$ ]] || [ "$1" == "-l"  ] && [[ $2 =~ ^[0-9]+$ ]]
 then
     for ((i=1; i<=$2; i++))
     do
         touch "log$i.txt"
         echo "Utworzono plik log$i.txt"
     done
-elif [ "$1" == "--logs" ]
+elif [ "$1" == "--logs" ] || [ "$1" == "-l" ]
 then
     # Ustalamy nazwę skryptu
     script_name=$(basename "$0")
