@@ -1,12 +1,18 @@
 #!/bin/bash
 
-if [ "$1" == "--help" ]
+if [ "$1" == "--date" ]
 then
     current_date=$(date +"%Y-%m-%d")
     echo "Dzisiejsza data: $current_date"
 fi
 
-
+if [ "$1" == "--help" ]
+then
+    echo "Dostępne komendy"
+    echo "--date wyświetla aktualną datę"
+    echo "--logs Tworzy 100 plików log"
+    echo "--logs [i] Tworzy i plików log"
+fi
 
 
 if [ "$1" == "--logs"  ] && [[ $2 =~ ^[0-9]+$ ]]
