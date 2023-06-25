@@ -68,3 +68,47 @@ then
         echo "Data: $current_date" >> "log$i/log$i.txt"
     done
 fi
+
+
+if [ "$1" == "--error"  ] && [[ $2 =~ ^[0-9]+$ ]] || [ "$1" == "-e"  ] && [[ $2 =~ ^[0-9]+$ ]]
+then
+    for ((i=1; i<=$2; i++))
+    do
+        # Pobieramy aktualną datę
+        current_date=$(date)
+        
+        # Tworzenie katalogu
+        mkdir -p "error$i"
+        
+        # Tworzenie pliku
+        touch "error$i/error$i.txt"
+        
+        # Dodawanie informacji do pliku
+        echo "Nazwa pliku: error$i/error$i.txt" >> "error$i/error$i.txt"
+        echo "Nazwa skryptu: $script_name" >> "error$i/error$i.txt"
+        echo "Data: $current_date" >> "error$i/error$i.txt"
+    done
+elif [ "$1" == "--error" ] || [ "$1" == "-e" ]
+then
+    # Ustalamy nazwę skryptu
+    script_name=$(basename "$0")
+    
+    #Iterujemy od 1 do 100
+    for i in {1..100}
+    do
+        
+        # Pobieramy aktualną datę
+        current_date=$(date)
+        
+        # Tworzenie katalogu
+        mkdir -p "error$i"
+        
+        # Tworzenie pliku
+        touch "error$i/error$i.txt"
+        
+        # Dodawanie informacji do pliku
+        echo "Nazwa pliku: error$i/error$i.txt" >> "error$i/error$i.txt"
+        echo "Nazwa skryptu: $script_name" >> "error$i/error$i.txt"
+        echo "Data: $current_date" >> "error$i/error$i.txt"
+    done
+fi
