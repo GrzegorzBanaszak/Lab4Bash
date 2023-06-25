@@ -6,12 +6,22 @@ then
     echo "Dzisiejsza data: $current_date"
 fi
 
-if [ "$1" == "--logs" ]
+
+
+
+if [ "$1" == "--logs"  ] && [[ $2 =~ ^[0-9]+$ ]]
+then
+    for ((i=1; i<=$2; i++))
+    do
+        touch "log$i.txt"
+        echo "Utworzono plik log$i.txt"
+    done
+elif [ "$1" == "--logs" ]
 then
     # Ustalamy nazwę skryptu
     script_name=$(basename "$0")
     
-    # Iterujemy od 1 do 100
+    #Iterujemy od 1 do 100
     for i in {1..100}
     do
         # Tworzymy nazwę pliku
